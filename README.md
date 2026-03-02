@@ -6,7 +6,7 @@
 
 # English
 
-## Additional Disclaimer
+## Disclaimer
 
 Any misuse of this software is solely the responsibility of the user.  
 The author assumes no liability for any damages, losses, or legal consequences arising from the use or misuse of this tool.
@@ -139,5 +139,6 @@ python scanner.py --ports 22,80,443 --open-only
 ``` bash
 python scanner.py --host example.com --ports 80,443 --acknowledge
 ```
+
 
 
