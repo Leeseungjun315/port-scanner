@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import argparse
 import asyncio
 import ipaddress
@@ -10,7 +9,7 @@ DEFAULT_CONCURRENCY = 200
 
 BANNER = """
 Ethical Port Scanner (TCP connect scan)
-- Use ONLY on systems you own or have explicit permission to test.
+- Use ONLY on systems u own or have explicit permission to test.
 - This tool is designed with safety defaults (localhost-first, opt-in for remote).
 """
 
@@ -26,7 +25,6 @@ def parse_ports(port_str: str) -> List[int]:
             ports.extend(range(start, end + 1))
         else:
             ports.append(int(part))
-    # validate range
     for p in ports:
         if p < 1 or p > 65535:
             raise ValueError(f"Invalid port: {p}")
@@ -37,8 +35,6 @@ def is_private_or_localhost(host: str) -> bool:
         ip = ipaddress.ip_address(host)
         return ip.is_private or ip.is_loopback
     except ValueError:
-        # Hostname: we can't reliably classify without DNS resolution.
-        # Treat as non-local to be safe.
         return False
 
 async def check_port(host: str, port: int, timeout: float, sem: asyncio.Semaphore) -> Tuple[int, str]:
@@ -55,7 +51,6 @@ async def check_port(host: str, port: int, timeout: float, sem: asyncio.Semaphor
         except (asyncio.TimeoutError, ConnectionRefusedError):
             return port, "closed"
         except OSError:
-            # Network unreachable, no route, etc.
             return port, "filtered"
         except Exception:
             return port, "error"
@@ -91,7 +86,6 @@ def main() -> int:
         print(f"[!] Port parse error: {e}", file=sys.stderr)
         return 2
 
-    # Safety gate: remote targets require explicit opt-in
     if not is_private_or_localhost(args.host):
         if not args.acknowledge:
             print(
@@ -102,7 +96,6 @@ def main() -> int:
             )
             return 3
 
-    # Additional guardrails
     if args.concurrency > 2000:
         print("[!] Concurrency too high for an ethical default. Please keep it <= 2000.", file=sys.stderr)
         return 4
@@ -130,4 +123,5 @@ def main() -> int:
     return 0
 
 if __name__ == "__main__":
+
     raise SystemExit(main())
