@@ -83,7 +83,7 @@ python scanner.py --host example.com --ports 80,443 --acknowledge
 
 ## 개요
 
-Ethical Port Scanner는 **허가된 보안 점검 및 학습 목적 전용**으로 제작된
+포트 스캐너는 **허가된 보안 점검 및 학습 목적 전용**으로 제작된
 TCP connect 기반 포트 스캐너입니다.
 
 이 프로젝트는 보안 도구를 설계하는 방법과 윤리적 안전장치를 코드에 포함하는 방식을 보여줍니다.
@@ -139,4 +139,5 @@ python scanner.py --ports 22,80,443 --open-only
 ``` bash
 python scanner.py --host example.com --ports 80,443 --acknowledge
 ```
+
 
