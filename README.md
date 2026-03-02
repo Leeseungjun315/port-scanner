@@ -1,4 +1,4 @@
-# Ethical Port Scanner
+# Port Scanner
 
 > 🇺🇸 English \| 🇰🇷 한국어
 
@@ -46,8 +46,8 @@ policies.
 Python 3.10+ recommended.
 
 ``` bash
-git clone https://github.com/yourusername/ethical-port-scanner.git
-cd ethical-port-scanner
+git clone https://github.com/yourusername/port-scanner.git
+cd port-scanner
 ```
 
 ------------------------------------------------------------------------
@@ -114,8 +114,8 @@ TCP connect 기반 포트 스캐너입니다.
 Python 3.10 이상 권장
 
 ``` bash
-git clone https://github.com/yourusername/ethical-port-scanner.git
-cd ethical-port-scanner
+git clone https://github.com/yourusername/port-scanner.git
+cd port-scanner
 ```
 
 ------------------------------------------------------------------------
@@ -139,3 +139,4 @@ python scanner.py --ports 22,80,443 --open-only
 ``` bash
 python scanner.py --host example.com --ports 80,443 --acknowledge
 ```
+
